@@ -1,0 +1,32 @@
+.movieItem{
+    width: 100%;
+    max-width: 200px;
+    margin: 0 10px 0 10px;
+    position: relative;
+    list-style: none;
+}
+.movieItem:hover{
+    cursor: pointer;
+    margin-top: -10px;
+}
+.movieItem h2{
+    height: 70px;
+}
+
+.movieItem img{
+    max-width: 200px;
+    border-radius: 20px;
+}
+.rating{
+    position: absolute;
+    color: white;
+    z-index: 2;
+    right: 0px;
+    background: #151f30;
+    border-top-right-radius: 10px;
+    width: 35px;
+    padding: 5px;
+    font-weight: 600;
+
+
+}
