@@ -1,0 +1,25 @@
+.myFavourites span{
+    color: white;
+    border: 1px solid red;
+    background: red;
+    border-radius: 50%;
+    width: 14px;
+    position: absolute;
+    text-align: center;
+    font-size: 10px;
+    z-index: 1;
+    top: -5px;
+    right: 3px;
+}
+
+.myFavourites svg{
+    color:#2f80ed;
+    width: 100%;
+    min-width: 40px;
+    position: relative;
+    top: 3px;
+}
+
+.myFavourites{
+    position: relative;
+}

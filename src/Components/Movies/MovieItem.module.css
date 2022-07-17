@@ -7,7 +7,6 @@
 }
 .movieItem:hover{
     cursor: pointer;
-    margin-top: -10px;
 }
 .movieItem h2{
     height: 70px;
@@ -15,7 +14,8 @@
 
 .movieItem img{
     max-width: 200px;
-    border-radius: 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 .rating{
     position: absolute;
@@ -27,6 +27,51 @@
     width: 35px;
     padding: 5px;
     font-weight: 600;
+}
 
+.movieDetails{
+    background: #151f30;
+    margin-top: -5px;
+    padding: 10px;
+    height: 130px;
+    position: relative;
+}
 
+.movieDetails h3{
+    font-size: 15px;
+    color: white;
+    padding: 5px 10px;
+}
+
+.trailerButton{
+    position: absolute;
+    bottom: 20px;
+    background: transparent;
+    border: none;
+    color: #2f80ed;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.trailerButton:hover{
+    background: #fff;
+    cursor: pointer;
+}
+
+.playTrailer{
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+.favourite{
+    position: absolute;
+    bottom: 23px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #2f80ed;
+}
+.favourite:hover{
+    cursor: pointer;
+    color: #fff; 
 }

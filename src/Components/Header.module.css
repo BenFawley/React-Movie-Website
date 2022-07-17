@@ -6,7 +6,7 @@
 }
 .headerContent{
     width: 100%;
-    max-width: 1300px;
+    max-width: 1600px;
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -32,4 +32,7 @@
     color: white;
     padding: 10px;
     border: none;
+}
+.logo{
+    width: 75px;
 }

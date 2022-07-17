@@ -1,34 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
+import MovieContext from '../Context/movie-context';
 import styles from './Modal.module.css';
 
-const Backdrop = (props) => {
+const Backdrop = () => {
+  const ctx = useContext(MovieContext);
+
   return(
-    <div className={styles.backdrop} onClick={props.onCloseTrailer}></div>
+    <div className={styles.backdrop} onClick={ctx.onCloseTrailer}></div>
   )
 }
 
-const ModalOverlay = (props) => {
+const ModalOverlay = ({ src, title }) => {
 
-  console.log(props.src)
+  console.log(src)
   return (
       <div className={styles.modal}>
-        <iframe className={styles.trailerIframe} src={`https://www.youtube.com/embed/${props.src}`} title={props.title} allowFullScreen>
+        <iframe className={styles.trailerIframe} src={`https://www.youtube.com/embed/${src}`} title={title} allowFullScreen>
 
         </iframe>
       </div>
   )
 }
 
-const Modal = (props) => {
+const Modal = ({ src }) => {
+
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop onCloseTrailer={props.onCloseTrailer} />,
+        <Backdrop />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay src={props.src} />,
+        <ModalOverlay src={src} />,
         document.getElementById("overlay-root")
       )}
     </>

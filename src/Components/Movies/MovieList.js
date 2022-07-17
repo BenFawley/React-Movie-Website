@@ -1,8 +1,17 @@
+import { useContext } from 'react';
+import MovieContext from '../../Context/movie-context';
 import MovieItem from './MovieItem';
 import stlyes from './MovieList.module.css';
 
 
-const MovieList = ({ loadedMovies, onShowTrailer }) => {  
+const MovieList = ({ loadedMovies }) => {  
+
+  const ctx = useContext(MovieContext);
+
+  const handleAddFavouriteMovie = (movie) =>{
+    ctx.onAddFavourites(movie);
+  }
+ 
 
   return (
         <ul className={stlyes.movieList}>
@@ -13,7 +22,8 @@ const MovieList = ({ loadedMovies, onShowTrailer }) => {
                   key={movie.id} 
                   imgPath={movie.poster_path}
                   rating={movie.vote_average.toFixed(1)}
-                  onShowTrailer={onShowTrailer}
+                  title={movie.original_title} 
+                  addFavouriteMovie={()=>{handleAddFavouriteMovie(movie)}}
                 />
                 
             ))}
