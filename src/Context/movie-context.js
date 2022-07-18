@@ -13,22 +13,14 @@ const trailerReducer = (state, action) => {
   return {id: "", showTrailer: false}
 }
 
-const favouritesReducer = (state, action) => {
-    if (action.type === "ADD_FAV_MOVIE"){
-        let index = state.findIndex(el=>el.id == action.movie.id);
-            if(index == -1){
-                return [...state, action.movie];
-            }else{
-                return state
-            }
-    }
-}
-
 const MovieContext = React.createContext({
     onViewTrailer: (id) => {},
     onCloseTrailer: () => {},
     onSearchMovie: ()=>{},
     onAddFavourites: ()=>{},
+    onShowFavourites: ()=>{},
+    onCloseFavList: ()=>{},
+    onRemoveFavMovie: (id)=>{},
 });
 
 export const MovieContextProvider = (props) => {
@@ -37,7 +29,9 @@ export const MovieContextProvider = (props) => {
     const [searchValue, setSearchValue] = useState("thor");
     const [trailerState, dispatchTrailer] = useReducer(trailerReducer, {id: "", showTrailer: false});
     const [videoURL, setVideoURL] = useState("");
-    const [favState, dispatchFav] = useReducer(favouritesReducer, []);
+    // const [favState, dispatchFav] = useReducer(favouritesReducer, []);
+    const [showFav, setShowFav] = useState(false);
+    const [favMovies, setFavMovies] = useState([]);
 
     const getMovies = async (searchValue) => {
         if(searchValue){
@@ -48,11 +42,9 @@ export const MovieContextProvider = (props) => {
         
             if (responseJSON.results){
             setMovies(responseJSON.results);
-            console.log(responseJSON.results);
         }
     }
-}
-  
+} 
     useEffect(() => {
       getMovies(searchValue);
     }, [searchValue]);
@@ -73,12 +65,10 @@ export const MovieContextProvider = (props) => {
             setVideoURL(movie.key);
         })
       }
-  
     }
   
     useEffect(() => {
       getTrailer(trailerState)
-      console.log(trailerState);
     }, [trailerState]);
   
     const handleShowTrailer = (id) => {
@@ -95,15 +85,29 @@ export const MovieContextProvider = (props) => {
       })
     }
     const handleAddFavourites = (movie) => {
-        dispatchFav({
-            type: "ADD_FAV_MOVIE",
-            movie: {
-                id: movie.id,
-                title: movie.original_title,
-                poster: movie.poster_path,
-            },
-        })
+        let index = favMovies.findIndex(el=>el.id === movie.id);
+            if(index === -1){
+                return setFavMovies([...favMovies, movie]);
+            }else{
+                return favMovies;
+            }
     }
+
+    const handleShowFavourites = () => {
+        setShowFav(true);
+    }
+
+    const handleCloseFavList = () => {
+        setShowFav(false);
+    }
+    const handleRemoveFavMovie = (id) => {
+        setFavMovies(current => {
+            current.filter(movie => {
+                console.log(movie);
+                return movie.id !== id;
+        })
+    });
+    };
 
     return (
         <MovieContext.Provider 
@@ -112,10 +116,14 @@ export const MovieContextProvider = (props) => {
             onCloseTrailer: handleCloseTrailer,
             onSearchMovie: setSearchValue,
             onAddFavourites: handleAddFavourites,
+            onShowFavourites: handleShowFavourites,
+            onCloseFavList: handleCloseFavList,
+            onRemoveFavMovie: handleRemoveFavMovie,
             trailerState: trailerState,
             movies: movies,
             videoURL: videoURL,
-            favState:favState,
+            showFav: showFav,
+            favMovies: favMovies,
          }}>
             {props.children}
         </MovieContext.Provider>

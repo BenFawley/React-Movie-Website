@@ -3,7 +3,8 @@ import { FaSearch } from 'react-icons/fa';
 import { ReactComponent as Logo } from '../logo.svg';
 import { useContext } from 'react';
 import MovieContext from '../Context/movie-context';
-import Favourites from './Favourites';
+import Favourites from './Movies/Favourites';
+import FavouriteList from './Movies/FavouriteList';
 
 
 const Header = (props) => {
@@ -13,6 +14,7 @@ const Header = (props) => {
   const onChangeHandler = (e) => {
     ctx.onSearchMovie(e.target.value);
   }
+
 
   return (
     <header className={styles.header}>
@@ -30,8 +32,8 @@ const Header = (props) => {
                 />
                 <FaSearch color="#2f80ed" className={styles.searchIcon}/>
             </div>
-            {/* {ctx.favourites && <Favourites />} */}
-            <Favourites />
+            {ctx.favMovies.length > 0 && <Favourites />}
+            {ctx.showFav && <FavouriteList />}
         </div>
     </header>
   )

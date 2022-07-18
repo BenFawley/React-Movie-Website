@@ -1,0 +1,19 @@
+.favContent{
+    margin: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #131720;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
+}
+.removeMovie{
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
+
+.removeMovie:hover{
+    color: #990000;
+}

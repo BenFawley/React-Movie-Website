@@ -18,6 +18,7 @@
     min-width: 40px;
     position: relative;
     top: 3px;
+    cursor: pointer;
 }
 
 .myFavourites{

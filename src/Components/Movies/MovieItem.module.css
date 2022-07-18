@@ -75,3 +75,6 @@
     cursor: pointer;
     color: #fff; 
 }
+.movieItem img:hover{
+    opacity: 0.5;
+}
