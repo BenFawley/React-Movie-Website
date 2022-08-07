@@ -32,8 +32,8 @@ const Header = (props) => {
                 />
                 <FaSearch color="#2f80ed" className={styles.searchIcon}/>
             </div>
-            {ctx.favMovies.length > 0 && <Favourites />}
-            {ctx.showFav && <FavouriteList />}
+            {ctx.favState.showFavIcon && <Favourites />}
+            {ctx.favState.showFavMovies && <FavouriteList />}
         </div>
     </header>
   )

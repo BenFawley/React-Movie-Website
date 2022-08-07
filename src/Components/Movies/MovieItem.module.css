@@ -35,6 +35,8 @@
     padding: 10px;
     height: 130px;
     position: relative;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .movieDetails h3{

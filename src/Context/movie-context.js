@@ -2,6 +2,12 @@ import React, { useState, useReducer, useEffect } from 'react';
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
+const initialState = {
+  showFavMovies: false,
+  favMovies: [],
+  showFavIcon: false,
+};
+
 const trailerReducer = (state, action) => {
   if(action.type === "SHOW_TRAILER"){
     return {id: action.id, showTrailer: action.showTrailer}
@@ -11,6 +17,57 @@ const trailerReducer = (state, action) => {
   }
   
   return {id: "", showTrailer: false}
+}
+
+const favouritesReducer = (state, action) => {
+  if (action.type === "ADD_FAV_MOVIE"){
+    const existingMovie = state.favMovies.findIndex(movie => movie.id === action.movie.id);
+    if(existingMovie > -1){
+      return state;
+    }else{
+      return {
+        ...state, 
+        favMovies: [...state.favMovies, action.movie],
+        showFavIcon: true,
+        showFavMovies: state.showFavMovies,
+      }
+    }
+  }
+  if(action.type ==="SHOW_FAV_LIST"){
+    return {
+      ...state,
+      favMovies:[...state.favMovies],
+      showFavMovies: action.showFavMovies,
+    }
+  }
+  if(action.type ==="HIDE_FAV_LIST"){
+    return {
+      ...state,
+      favMovies:[...state.favMovies],
+      showFavMovies:action.showFavMovies,
+    }
+  }
+  if(action.type === "REMOVE"){
+      if(state.favMovies.length === 1){
+        let updatedMovies = state.favMovies.filter(current=>
+          current.id !== action.id);
+          return {
+            favMovies: updatedMovies,
+            showFavIcon: false,
+            showFavMovies: false,
+          }
+      } else {
+          let updatedMovies = state.favMovies.filter(current=>current.id !== action.id);
+          console.log(updatedMovies);
+            return {
+              favMovies: updatedMovies,
+              showFavIcon: true,
+              showFavMovies: true,
+      }
+    }
+  } else {
+    return state;
+  }
 }
 
 const MovieContext = React.createContext({
@@ -29,9 +86,7 @@ export const MovieContextProvider = (props) => {
     const [searchValue, setSearchValue] = useState("thor");
     const [trailerState, dispatchTrailer] = useReducer(trailerReducer, {id: "", showTrailer: false});
     const [videoURL, setVideoURL] = useState("");
-    // const [favState, dispatchFav] = useReducer(favouritesReducer, []);
-    const [showFav, setShowFav] = useState(false);
-    const [favMovies, setFavMovies] = useState([]);
+    const [favState, dispatchFav] = useReducer(favouritesReducer, initialState);
 
     const getMovies = async (searchValue) => {
         if(searchValue){
@@ -84,29 +139,37 @@ export const MovieContextProvider = (props) => {
         showTrailer: false
       })
     }
+   
     const handleAddFavourites = (movie) => {
-        let index = favMovies.findIndex(el=>el.id === movie.id);
-            if(index === -1){
-                return setFavMovies([...favMovies, movie]);
-            }else{
-                return favMovies;
-            }
-    }
+      dispatchFav({
+          type: "ADD_FAV_MOVIE",
+          movie: {
+              id: movie.id,
+              title: movie.original_title,
+              poster: movie.poster_path,
+          },
+          showFavIcon: true,
+      })
+  }
 
     const handleShowFavourites = () => {
-        setShowFav(true);
+        dispatchFav({
+          type:"SHOW_FAV_LIST",
+          showFavMovies:true,
+        })
     }
 
     const handleCloseFavList = () => {
-        setShowFav(false);
+        dispatchFav({
+          type:"HIDE_FAV_LIST",
+          showFavMovies:false,
+        })
     }
     const handleRemoveFavMovie = (id) => {
-        setFavMovies(current => {
-            current.filter(movie => {
-                console.log(movie);
-                return movie.id !== id;
+        dispatchFav({
+          type: "REMOVE",
+          id: parseInt(id, 10),
         })
-    });
     };
 
     return (
@@ -122,8 +185,7 @@ export const MovieContextProvider = (props) => {
             trailerState: trailerState,
             movies: movies,
             videoURL: videoURL,
-            showFav: showFav,
-            favMovies: favMovies,
+            favState: favState,
          }}>
             {props.children}
         </MovieContext.Provider>

@@ -14,7 +14,7 @@ const Favourites = () => {
   return (
     <div className={styles.myFavourites} onClick={showFavourites}>
         <FaHeart />
-        <span>{ctx.favMovies.length}</span>
+        <span>{ctx.favState.favMovies.length}</span>
     </div>
   )
 }

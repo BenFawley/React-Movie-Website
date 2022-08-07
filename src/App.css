@@ -10,7 +10,17 @@ body{
     font-family: Montserrat !important;
 }
 .movieListWrapper{
-    flex-wrap: nowrap;
     overflow-x: auto;
-    margin-top: 40px;
+    margin: 40px 10px 40px 10px;
+    scrollbar-width: none;
+}
+.react-horizontal-scrolling-menu--arrow-left, .react-horizontal-scrolling-menu--arrow-right{
+    align-items: center;
+    padding: 10px;
+}
+.react-horizontal-scrolling-menu--scroll-container{
+    scrollbar-width: none;
+}
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+    display: none;
 }

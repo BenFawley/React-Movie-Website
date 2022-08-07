@@ -17,7 +17,7 @@ const App = () => {
         
       </div>
       <div className="movieListWrapper">
-       <MovieList loadedMovies={ctx.movies} onShowTrailer={ctx.handleShowTrailer}/>  
+       <MovieList loadedMovies={ctx.movies} onShowTrailer={ctx.handleShowTrailer}/>   
       </div>
       {ctx.trailerState.showTrailer && <Modal src={ctx.videoURL} />}
     </>

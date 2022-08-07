@@ -16,6 +16,7 @@ const FavouriteList = () => {
     const handleRemoveMovie = (id) => {
         console.log(id);
         ctx.onRemoveFavMovie(id);
+
     }
 
   return (
@@ -24,16 +25,16 @@ const FavouriteList = () => {
             <h3>Favourites</h3>
             <p onClick={handleCloseFavList}>X</p>
         </div>
-        {ctx.favMovies && ctx.favMovies.map((movie)=>{
+        {ctx.favState.showFavMovies && ctx.favState.favMovies.map((movie)=>{
            return <FavMovieItem 
                 key={movie.id}
                 id={movie.id}
-                imgSrc={imgURL + movie.poster_path}
-                title={movie.original_title}
+                imgSrc={imgURL + movie.poster}
+                title={movie.title}
                 onRemoveMovie={handleRemoveMovie}
             />
             })
-        }
+       } 
     </div>
   )
 }
