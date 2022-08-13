@@ -13,6 +13,10 @@ body{
     overflow-x: auto;
     margin: 40px 10px 40px 10px;
     scrollbar-width: none;
+    width: 100%;
+    max-width: 1700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .react-horizontal-scrolling-menu--arrow-left, .react-horizontal-scrolling-menu--arrow-right{
     align-items: center;

@@ -1,6 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
+import { getSearchedMovies } from '../api/getSearchedMovies';
+import { getTrailer } from '../api/getTrailer';
 
-const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 const initialState = {
   showFavMovies: false,
@@ -58,7 +59,6 @@ const favouritesReducer = (state, action) => {
           }
       } else {
           let updatedMovies = state.favMovies.filter(current=>current.id !== action.id);
-          console.log(updatedMovies);
             return {
               favMovies: updatedMovies,
               showFavIcon: true,
@@ -78,53 +78,38 @@ const MovieContext = React.createContext({
     onShowFavourites: ()=>{},
     onCloseFavList: ()=>{},
     onRemoveFavMovie: (id)=>{},
+    onClearSearch: ()=>{},
 });
 
 export const MovieContextProvider = (props) => {
 
     const [movies, setMovies] = useState([]);
-    const [searchValue, setSearchValue] = useState("thor");
+    const [searchValue, setSearchValue] = useState("");
     const [trailerState, dispatchTrailer] = useReducer(trailerReducer, {id: "", showTrailer: false});
     const [videoURL, setVideoURL] = useState("");
     const [favState, dispatchFav] = useReducer(favouritesReducer, initialState);
 
-    const getMovies = async (searchValue) => {
-        if(searchValue){
-            const url = `https://api.themoviedb.org/3/search/movie${API_KEY}&query=${searchValue}`;
-    
-            const response =  await fetch(url);
-            const responseJSON = await response.json();
-        
-            if (responseJSON.results){
-            setMovies(responseJSON.results);
-        }
-    }
-} 
+
     useEffect(() => {
-      getMovies(searchValue);
+      fetchSearchedMovie(searchValue);
     }, [searchValue]);
-  
-    const getTrailer = async ({id}) => {
-      const trailerURL = `https://api.themoviedb.org/3/movie/${id}/videos${API_KEY}`;
-  
-      const response = await fetch(trailerURL);
-      const responseJSON = await response.json();
-  
-      const trailers = responseJSON.results;
-  
-      if(trailers){
-          trailers.find((movie)=>{
-            if(movie.type.toLowerCase()=== "Trailer"  ){
-              return movie.key;
-            }
-            setVideoURL(movie.key);
-        })
-      }
-    }
-  
+
     useEffect(() => {
-      getTrailer(trailerState)
+      fetchTrailer(trailerState)
     }, [trailerState]);
+
+   
+    const fetchSearchedMovie = async (searchValue) => {
+      if (searchValue){
+        const searchMovie = await getSearchedMovies(searchValue);
+            setMovies(searchMovie);
+      }
+    } 
+  
+    const fetchTrailer = async ({id}) => {
+     const movieTrailer = await getTrailer(id);
+     setVideoURL(movieTrailer);
+    }
   
     const handleShowTrailer = (id) => {
       dispatchTrailer({
@@ -171,6 +156,11 @@ export const MovieContextProvider = (props) => {
           id: parseInt(id, 10),
         })
     };
+    const handleClearSearch = (id) => {
+      const clearMovies = movies.filter((current)=>current.id === id);
+      setMovies(clearMovies);
+    }
+    
 
     return (
         <MovieContext.Provider 
@@ -182,6 +172,7 @@ export const MovieContextProvider = (props) => {
             onShowFavourites: handleShowFavourites,
             onCloseFavList: handleCloseFavList,
             onRemoveFavMovie: handleRemoveFavMovie,
+            onClearSearch: handleClearSearch,
             trailerState: trailerState,
             movies: movies,
             videoURL: videoURL,

@@ -12,7 +12,12 @@ const Header = (props) => {
   const ctx = useContext(MovieContext);
 
   const onChangeHandler = (e) => {
-    ctx.onSearchMovie(e.target.value);
+    if (e.target.value.length > 0){
+      ctx.onSearchMovie(e.target.value);
+    } else{
+      const id = "";
+      ctx.onClearSearch(id);
+    }
   }
 
 

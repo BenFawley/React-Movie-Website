@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MovieContext from '../../Context/movie-context';
 import MovieItem from './MovieItem';
 import stlyes from './MovieList.module.css';
@@ -30,7 +30,18 @@ const RightArrow = () => {
 
 
 
-const MovieList = ({ loadedMovies }) => {  
+const MovieList = ({ loadedMovies, title, fetchURL }) => {  
+  const [homePageMovies, setHomePageMovies] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await fetch(fetchURL)
+      .then((res)=>res.json());
+      setHomePageMovies(request.results);
+      return request;
+    } 
+    fetchData()
+  }, [fetchURL])
 
   const ctx = useContext(MovieContext);
 
@@ -41,20 +52,29 @@ const MovieList = ({ loadedMovies }) => {
 
   return (
       <div className={stlyes.scrollBar}>
+        <h2 className={stlyes.heading}>{title}</h2>
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} >
-        {/* <ul className={stlyes.movieList}> */}
-            {loadedMovies.map((movie)=>(
-                movie.poster_path &&
-                <MovieItem 
-                  id={movie.id}
-                  key={movie.id} 
-                  imgPath={movie.poster_path}
-                  rating={movie.vote_average.toFixed(1)}
-                  title={movie.original_title} 
-                  addFavouriteMovie={()=>{handleAddFavouriteMovie(movie)}}
-                />
-            ))}
-        {/* </ul> */}
+            {loadedMovies ? loadedMovies.map((movie)=>(
+              movie.poster_path &&
+              <MovieItem 
+                id={movie.id}
+                key={movie.id} 
+                imgPath={movie.poster_path}
+                rating={movie.vote_average.toFixed(1)}
+                title={movie.original_title} 
+                addFavouriteMovie={()=>{handleAddFavouriteMovie(movie)}}
+              />
+            )) : homePageMovies.map((movie)=>(
+              movie.poster_path &&
+              <MovieItem 
+                id={movie.id}
+                key={movie.id} 
+                imgPath={movie.poster_path}
+                rating={movie.vote_average.toFixed(1)}
+                title={movie.original_title} 
+                addFavouriteMovie={()=>{handleAddFavouriteMovie(movie)}}
+              />
+          ))}
         </ScrollMenu>
       </div>
 

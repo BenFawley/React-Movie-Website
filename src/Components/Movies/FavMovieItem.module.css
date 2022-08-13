@@ -17,3 +17,8 @@
 .removeMovie:hover{
     color: #990000;
 }
+
+.favContent img:hover{
+    cursor: pointer;
+    transform: scale(1.08);
+}

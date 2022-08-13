@@ -14,7 +14,6 @@ const FavouriteList = () => {
     }
 
     const handleRemoveMovie = (id) => {
-        console.log(id);
         ctx.onRemoveFavMovie(id);
 
     }
