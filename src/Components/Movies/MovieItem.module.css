@@ -5,7 +5,7 @@
     position: relative;
     list-style: none;
 }
-.movieItem:hover{
+.movieItem img:hover{
     cursor: pointer;
 }
 .movieItem h2{

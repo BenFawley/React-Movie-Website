@@ -3,11 +3,13 @@ import { FaPlay, FaHeart } from 'react-icons/fa';
 import { useContext } from 'react';
 import MovieContext from '../../Context/movie-context';
 import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
+import { imageURL } from '../../api/config';
 
-const imageURL = "https://image.tmdb.org/t/p/w342";
 
+const MovieItem = ({ id, imgPath, rating, title, addFavouriteMovie, banner, overview}) => {
 
-const MovieItem = ({ id, imgPath, rating, title, addFavouriteMovie}) => {
+  let navigate = useNavigate();
 
   const ctx = useContext(MovieContext);
 
@@ -15,18 +17,14 @@ const MovieItem = ({ id, imgPath, rating, title, addFavouriteMovie}) => {
     ctx.onShowTrailer(e.target.id);
   }
 
-
-
   return (
     <li 
     className={styles.movieItem} 
     key={id} 
     id={id}
     >
-        <div>
-          <img src={imageURL + imgPath} alt="Movie Poster" />
+          <img src={imageURL + imgPath} alt="Movie Poster" onClick={()=>{navigate(`/movie/${id}${imgPath}/${rating}/${title}${banner}/${overview}`)}}/>
           <span className={styles.rating} style={{color: rating < 5 ? "red" : rating > 5 & rating < 8 ? "yellow" :  "green" }}>{rating}</span>
-        </div>
         <div className={styles.movieDetails}>
           <h3>{title}</h3>
           <div className={styles.detailsIcons}>

@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import MovieContext from '../Context/movie-context';
 import Favourites from './Movies/Favourites';
 import FavouriteList from './Movies/FavouriteList';
+import { Link } from 'react-router-dom';
 
 
 const Header = (props) => {
@@ -25,7 +26,9 @@ const Header = (props) => {
     <header className={styles.header}>
         <div className={styles.headerContent}>
             <div className={styles.logo}>
-                <Logo className={styles.logo}/>
+                <Link to={"/"}>
+                  <Logo className={styles.logo}/>
+                </Link>
             </div>
             <div className={styles.searchWrapper}>
                 <input 

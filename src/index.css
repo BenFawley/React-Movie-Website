@@ -1,0 +1,10 @@
+.react-horizontal-scrolling-menu--scroll-container{
+    scrollbar-width: none;
+}
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+    display: none;
+}
+.react-horizontal-scrolling-menu--arrow-left, .react-horizontal-scrolling-menu--arrow-right{
+    align-items: center;
+    padding: 10px;
+}
