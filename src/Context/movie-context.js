@@ -102,6 +102,7 @@ export const MovieContextProvider = (props) => {
     const fetchSearchedMovie = async (searchValue) => {
       if (searchValue){
         const searchMovie = await getSearchedMovies(searchValue);
+            console.log(searchMovie);
             setMovies(searchMovie);
       }
     } 
@@ -126,6 +127,7 @@ export const MovieContextProvider = (props) => {
     }
    
     const handleAddFavourites = (movie) => {
+      console.log(movie);
       dispatchFav({
           type: "ADD_FAV_MOVIE",
           movie: {

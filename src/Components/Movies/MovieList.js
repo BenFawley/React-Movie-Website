@@ -65,6 +65,7 @@ const MovieList = ({ loadedMovies, title, fetchURL }) => {
                   title={movie.original_title} 
                   banner={movie.backdrop_path}
                   overview={movie.overview}
+                  date={movie.release_date}
                   addFavouriteMovie={()=>{handleAddFavouriteMovie(movie)}}
                 />
             )) : homePageMovies.map((movie)=>(
@@ -77,6 +78,7 @@ const MovieList = ({ loadedMovies, title, fetchURL }) => {
                   title={movie.original_title}
                   banner={movie.backdrop_path} 
                   overview={movie.overview}
+                  date={movie.release_date}
                   addFavouriteMovie={()=>{handleAddFavouriteMovie(movie)}}
                 />
           ))}

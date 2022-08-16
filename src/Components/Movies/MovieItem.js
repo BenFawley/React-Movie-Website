@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { imageURL } from '../../api/config';
 
 
-const MovieItem = ({ id, imgPath, rating, title, addFavouriteMovie, banner, overview}) => {
+const MovieItem = ({ id, imgPath, rating, title, addFavouriteMovie, banner, overview, date }) => {
 
   let navigate = useNavigate();
 
@@ -23,8 +23,8 @@ const MovieItem = ({ id, imgPath, rating, title, addFavouriteMovie, banner, over
     key={id} 
     id={id}
     >
-          <img src={imageURL + imgPath} alt="Movie Poster" onClick={()=>{navigate(`/movie/${id}${imgPath}/${rating}/${title}${banner}/${overview}`)}}/>
-          <span className={styles.rating} style={{color: rating < 5 ? "red" : rating > 5 & rating < 8 ? "yellow" :  "green" }}>{rating}</span>
+          <img src={imageURL + imgPath} alt="Movie Poster" onClick={()=>{navigate(`/movie/${id}${imgPath}/${rating}/${title}${banner}/${overview}/${date}`)}}/>
+          <span className={styles.rating} style={{color: rating < 5 ? "red" : rating > 5 & rating < 8 ? "#d2d531" :  "#32CD32" }}>{rating}</span>
         <div className={styles.movieDetails}>
           <h3>{title}</h3>
           <div className={styles.detailsIcons}>

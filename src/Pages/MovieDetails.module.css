@@ -2,15 +2,86 @@
     position: relative;
     max-height: 720px;
 }
-.bannerWrap img{
+.bannerImage{
     max-height: 720px;
     width: 100%;
 }
 .bannerOverlay{
-    background: #000;
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerPoster{
+    margin-right: 5%;
+}
+.posterImage{
+    /* max-width: 300px; */
+    border-radius: 20px;
+}
+
+.bannerContent{
+    max-width: 700px;
+    width: 100%;
+    color: white;
+}
+
+.bannerContent h1{
+    color: white;
+    margin-bottom: 30px;
+}
+.bannerContent h3, .bannerContent p{
+    padding: 5px;
+}
+
+.bannerButtons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 400px;
+}
+
+.trailerButton{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.trailerButton, .favourite{
+    background: #151f30;
+    padding: 12px 15px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 30px;
+}
+.trailerButton:hover, .favourite:hover{
+    cursor: pointer;
+}
+.playTrailer, .addToFav{
+    margin-right: 10px;
+}
+.movieText{
+    margin-top: 20px;
+}
+.movieText p{
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+.bannerButtons h3{
+    background: #151f30;
+    border-radius: 50%;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }

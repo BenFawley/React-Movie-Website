@@ -1,6 +1,6 @@
 .movieItem{
     width: 100%;
-    max-width: 200px;
+    max-width: 210px;
     margin: 0 10px 0 10px;
     position: relative;
     list-style: none;
@@ -13,7 +13,7 @@
 }
 
 .movieItem img{
-    max-width: 200px;
+    max-width: 210px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
