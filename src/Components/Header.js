@@ -35,7 +35,7 @@ const Header = (props) => {
                   className={styles.search}
                   type="search" 
                   placeholder="Search Movies..." 
-                  value={props.searchValue}
+                  value={ctx.searchValue}
                   onChange={onChangeHandler}
                 />
                 <FaSearch color="#2f80ed" className={styles.searchIcon}/>

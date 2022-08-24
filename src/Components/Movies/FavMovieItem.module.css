@@ -22,6 +22,11 @@
     border-radius: 5px;
 }
 
+.favContent p{
+    text-align: center;
+    padding: 5px;
+}
+
 .favContent img:hover{
     cursor: pointer;
     transform: scale(1.08);

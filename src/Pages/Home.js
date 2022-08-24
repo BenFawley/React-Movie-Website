@@ -15,7 +15,6 @@ const Home = () => {
 
   return (
     <>
-      <Header searchValue={ctx.searchValue} setSearchValue={ctx.setSearchValue}/>
       <HomeBanner />
       {ctx.trailerState.showTrailer && <Modal src={ctx.videoURL} />}
       {!ctx.movies.length > 0 ? <div className={styles.movieListWrapper}>

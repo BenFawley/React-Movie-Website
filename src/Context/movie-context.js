@@ -2,7 +2,6 @@ import React, { useState, useReducer, useEffect } from 'react';
 import { getSearchedMovies } from '../api/getSearchedMovies';
 import { getTrailer } from '../api/getTrailer';
 
-
 const initialState = {
   showFavMovies: false,
   favMovies: [],
@@ -102,7 +101,6 @@ export const MovieContextProvider = (props) => {
     const fetchSearchedMovie = async (searchValue) => {
       if (searchValue){
         const searchMovie = await getSearchedMovies(searchValue);
-            console.log(searchMovie);
             setMovies(searchMovie);
       }
     } 
@@ -126,14 +124,13 @@ export const MovieContextProvider = (props) => {
       })
     }
    
-    const handleAddFavourites = (movie) => {
-      console.log(movie);
+    const handleAddFavourites = ({id, original_title, poster_path, name}) => {
       dispatchFav({
           type: "ADD_FAV_MOVIE",
           movie: {
-              id: movie.id,
-              title: movie.original_title,
-              poster: movie.poster_path,
+              id: id,
+              title: original_title ? original_title : name,
+              poster: poster_path,
           },
           showFavIcon: true,
       })
@@ -153,6 +150,7 @@ export const MovieContextProvider = (props) => {
         })
     }
     const handleRemoveFavMovie = (id) => {
+        console.log(id);
         dispatchFav({
           type: "REMOVE",
           id: parseInt(id, 10),
@@ -161,7 +159,9 @@ export const MovieContextProvider = (props) => {
     const handleClearSearch = (id) => {
       const clearMovies = movies.filter((current)=>current.id === id);
       setMovies(clearMovies);
+      setSearchValue("");
     }
+    
     
 
     return (

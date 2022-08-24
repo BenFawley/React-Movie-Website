@@ -58,11 +58,11 @@ const MovieList = ({ loadedMovies, title, fetchURL }) => {
             {loadedMovies ? loadedMovies.map((movie)=>(
               movie.poster_path &&
                 <MovieItem 
-                  id={movie.id}
+                  id={parseInt(movie.id)}
                   key={movie.id} 
                   imgPath={movie.poster_path}
                   rating={movie.vote_average.toFixed(1)}
-                  title={movie.original_title} 
+                  title={movie.original_title ? movie.original_title : movie.name} 
                   banner={movie.backdrop_path}
                   overview={movie.overview}
                   date={movie.release_date}
@@ -71,11 +71,11 @@ const MovieList = ({ loadedMovies, title, fetchURL }) => {
             )) : homePageMovies.map((movie)=>(
               movie.poster_path &&
                 <MovieItem 
-                  id={movie.id}
+                  id={parseInt(movie.id)}
                   key={movie.id} 
                   imgPath={movie.poster_path}
                   rating={movie.vote_average.toFixed(1)}
-                  title={movie.original_title}
+                  title={movie.original_title ? movie.original_title : movie.name}
                   banner={movie.backdrop_path} 
                   overview={movie.overview}
                   date={movie.release_date}

@@ -1,10 +1,10 @@
 .favMovieList{
     position: absolute;
-    top: 50px;
+    top: 90%;
     width: 100%;
     max-width: 350px;
     z-index: 200;
-    right: 3.5%;
+    right: 2%;
     background-color: #151f30;
     padding: 0px;
     overflow-y: scroll;
