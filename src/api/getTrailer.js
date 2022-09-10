@@ -10,13 +10,12 @@ export const getTrailer = async (id) => {
   });
       if(response.results){
            const key = response.results.find((movie)=>{
-            if(movie.type.toLowerCase() == "Trailer"){
+            if(movie.type === "Trailer"){
               return movie;
             }
             return movie;
         })        
         let newKey = key.key;
-        console.log(newKey);
         return newKey;
       }
 }

@@ -16,6 +16,7 @@
     max-width: 210px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    min-height: 315px;
 }
 .rating{
     position: absolute;

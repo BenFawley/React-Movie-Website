@@ -40,3 +40,12 @@
 .logo{
     width: 75px;
 }
+
+@media screen and (max-width: 500px){
+    .search{
+        width: 220px;
+    }
+    .searchIcon{
+        left: 85%;
+    }
+}

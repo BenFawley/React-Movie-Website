@@ -12,7 +12,7 @@ const Backdrop = () => {
 }
 
 const ModalOverlay = ({ src, title }) => {
-  console.log(src);
+  console.log(src)
   return (
       <div className={styles.modal}>
         <iframe className={styles.trailerIframe} src={`https://www.youtube.com/embed/${src}`} title={title} allowFullScreen>

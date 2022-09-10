@@ -7,28 +7,32 @@ import MovieContext from '../Context/movie-context';
 import HomeBanner from '../Components/HomeBanner';
 import { requests } from '../api/config';
 import Footer from '../Components/Footer';
+import SpringIn from '../Spring/SpringIn';
 
 
 const Home = () => {
 
+
   const ctx = useContext(MovieContext);
+
+
 
   return (
     <>
       <HomeBanner />
       {ctx.trailerState.showTrailer && <Modal src={ctx.videoURL} />}
       {!ctx.movies.length > 0 ? <div className={styles.movieListWrapper}>
-        <MovieList fetchURL={requests.fetchTrending} onShowTrailer={ctx.handleShowTrailer} title="Trending Now"/> 
-        <MovieList fetchURL={requests.fetchTopRated} onShowTrailer={ctx.handleShowTrailer} title="Top Rated"/> 
-        <MovieList fetchURL={requests.fetchActionMovies} onShowTrailer={ctx.handleShowTrailer} title="Action Movies"/>
-        <MovieList fetchURL={requests.fetchComedyMovies} onShowTrailer={ctx.handleShowTrailer} title="Comedy Movies"/>
-        <MovieList fetchURL={requests.fetchFamilyMovies} onShowTrailer={ctx.handleShowTrailer} title="Family Movies"/>
-        <MovieList fetchURL={requests.fetchHorrorMovies} onShowTrailer={ctx.handleShowTrailer} title="Horror Movies"/>
-        <MovieList fetchURL={requests.fetchRomanceMovies} onShowTrailer={ctx.handleShowTrailer} title="Romantic Movies"/>
-        <MovieList fetchURL={requests.fetchThrillerMovies} onShowTrailer={ctx.handleShowTrailer} title="Thriller Movies"/>
+        {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchTrending} onShowTrailer={ctx.handleShowTrailer} title="Trending Now"/></SpringIn>}
+        {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchTopRated} onShowTrailer={ctx.handleShowTrailer} title="Top Rated"/> </SpringIn>}
+        {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchActionMovies} onShowTrailer={ctx.handleShowTrailer} title="Action Movies"/></SpringIn>}
+        {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchComedyMovies} onShowTrailer={ctx.handleShowTrailer} title="Comedy Movies"/></SpringIn>}
+         {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchFamilyMovies} onShowTrailer={ctx.handleShowTrailer} title="Family Movies"/></SpringIn>}
+         {ctx.startAnimation && <SpringIn> <MovieList fetchURL={requests.fetchHorrorMovies} onShowTrailer={ctx.handleShowTrailer} title="Horror Movies"/></SpringIn>}
+         {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchRomanceMovies} onShowTrailer={ctx.handleShowTrailer} title="Romantic Movies"/></SpringIn>}
+         {ctx.startAnimation && <SpringIn> <MovieList fetchURL={requests.fetchThrillerMovies} onShowTrailer={ctx.handleShowTrailer} title="Thriller Movies"/></SpringIn>}
       </div> : <div className={styles.movieListWrapper}>
                 <MovieList loadedMovies={ctx.movies} onShowTrailer={ctx.handleShowTrailer} title="Results"/> 
-              </div>}
+              </div>} 
       <Footer />
     </>
   )

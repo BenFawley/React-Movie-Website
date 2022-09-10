@@ -1,9 +1,9 @@
 .bannerWrap{
     position: relative;
-    max-height: 720px;
+    max-height: 600px;
 }
 .bannerImage{
-    max-height: 720px;
+    max-height: 600px;
     width: 100%;
 }
 .bannerOverlay{
@@ -95,4 +95,28 @@
     max-width: 1700px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (max-width: 768px){
+    .bannerOverlay{
+        position: relative;
+        display: block;
+        background:none !important;
+    }
+    .bannerPoster{
+        display: none;
+    }
+    .trailerButton, .favourite{
+        font-size: 11px;
+    }
+    .bannerButtons{
+        align-items: center;
+    }
+    .bannerContent{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .bannerWrap{
+        max-height: unset;
+    }
 }

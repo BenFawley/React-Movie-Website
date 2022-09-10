@@ -8,6 +8,7 @@
 body{
     background: #131720;
     font-family: Montserrat !important;
+    overflow-x: hidden;
 }
 .movieListWrapper{
     overflow-x: auto;

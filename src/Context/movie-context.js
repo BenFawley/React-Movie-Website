@@ -1,6 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import { getSearchedMovies } from '../api/getSearchedMovies';
 import { getTrailer } from '../api/getTrailer';
+import { BASE_URL, API_KEY } from "../api/config";
 
 const initialState = {
   showFavMovies: false,
@@ -87,6 +88,11 @@ export const MovieContextProvider = (props) => {
     const [trailerState, dispatchTrailer] = useReducer(trailerReducer, {id: "", showTrailer: false});
     const [videoURL, setVideoURL] = useState("");
     const [favState, dispatchFav] = useReducer(favouritesReducer, initialState);
+    const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    setStartAnimation(true);
+  }, []);
 
 
     useEffect(() => {
@@ -179,6 +185,7 @@ export const MovieContextProvider = (props) => {
             movies: movies,
             videoURL: videoURL,
             favState: favState,
+            startAnimation: startAnimation,
          }}>
             {props.children}
         </MovieContext.Provider>
