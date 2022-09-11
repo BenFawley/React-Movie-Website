@@ -115,6 +115,7 @@
     .bannerContent{
         padding-left: 15px;
         padding-right: 15px;
+        padding-top: 20px;
     }
     .bannerWrap{
         max-height: unset;
