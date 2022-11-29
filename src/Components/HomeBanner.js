@@ -13,16 +13,16 @@ import Color from 'color-thief-react';
 
 
 
-const HomeBanner = (props) => {
+const HomeBanner = ({ innerRef }) => {
 
 const ctx = useContext(MovieContext);
 
   return (
-    <Carousel autoPlay infiniteLoop={true} showThumbs={false}>
+    <Carousel autoPlay infiniteLoop={true} showThumbs={false} >
       {/* <Color src={image1} crossOrigin="anonymous" format="rgbString">
           {({ data }) => {
             return ( */}
-              <div className={styles.carouselItem}>
+              <div ref={innerRef} className={styles.carouselItem}>
                 <img className={styles.fadeIn} src={image1} alt="Carousel Movie Banner" style={{opacity: ctx.startAnimation ? 1 : 0}}/>
                 <div className={styles.homebannerOverlay} style={{background: "000"}}></div>
                 <div className={styles.homebannerText}>

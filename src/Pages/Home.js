@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import Header from '../Components/Header';
 import styles from './Home.module.css';
 import MovieList from '../Components/Movies/MovieList';
@@ -15,11 +15,22 @@ const Home = () => {
 
   const ctx = useContext(MovieContext);
 
+  const modalRef = useRef();
+
+  useEffect(()=>{
+    if(ctx.videoURL){
+      modalRef.current.scrollIntoView({
+        behaviour: "smooth",
+        inline: "start",
+        block: "start",
+      });
+    }
+  }, [ctx.videoURL])
 
 
   return (
     <>
-      <HomeBanner />
+      <HomeBanner innerRef={modalRef} />
       {ctx.videoURL && <Modal src={ctx.videoURL} />}
       {!ctx.movies.length > 0 ? <div className={styles.movieListWrapper}>
         {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchTrending} onShowTrailer={ctx.handleShowTrailer} title="Trending Now"/></SpringIn>}

@@ -8,7 +8,7 @@ import FavouriteList from './Movies/FavouriteList';
 import { Link } from 'react-router-dom';
 
 
-const Header = (props) => {
+const Header = () => {
 
   const ctx = useContext(MovieContext);
 
