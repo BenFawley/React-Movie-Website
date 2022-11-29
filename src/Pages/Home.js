@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <>
       <HomeBanner />
-      {ctx.trailerState.showTrailer && <Modal src={ctx.videoURL} />}
+      {ctx.videoURL && <Modal src={ctx.videoURL} />}
       {!ctx.movies.length > 0 ? <div className={styles.movieListWrapper}>
         {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchTrending} onShowTrailer={ctx.handleShowTrailer} title="Trending Now"/></SpringIn>}
         {ctx.startAnimation && <SpringIn><MovieList fetchURL={requests.fetchTopRated} onShowTrailer={ctx.handleShowTrailer} title="Top Rated"/> </SpringIn>}
