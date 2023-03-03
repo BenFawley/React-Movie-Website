@@ -1,83 +1,87 @@
-.movieItem{
-    width: 100%;
-    max-width: 210px;
-    margin: 0 10px 0 10px;
-    position: relative;
-    list-style: none;
+.movieItem {
+  width: 100%;
+  max-width: 210px;
+  margin: 0 10px 0 10px;
+  position: relative;
+  list-style: none;
+  cursor: pointer;
 }
-.movieItem img:hover{
-    cursor: pointer;
+.movieItem img:hover {
+  cursor: pointer;
 }
-.movieItem h2{
-    height: 70px;
-}
-
-.movieItem img{
-    max-width: 210px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    min-height: 315px;
-}
-.rating{
-    position: absolute;
-    color: white;
-    z-index: 2;
-    right: 0px;
-    background: #151f30;
-    border-top-right-radius: 10px;
-    width: 35px;
-    padding: 5px;
-    font-weight: 600;
+.movieItem h2 {
+  height: 70px;
 }
 
-.movieDetails{
-    background: #151f30;
-    margin-top: -5px;
-    padding: 10px;
-    height: 130px;
-    position: relative;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+.movieItem img {
+  max-width: 210px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  min-height: 315px;
+}
+.rating {
+  position: absolute;
+  color: white;
+  z-index: 2;
+  right: 0px;
+  background: #151f30;
+  border-top-right-radius: 10px;
+  width: 35px;
+  padding: 5px;
+  font-weight: 600;
 }
 
-.movieDetails h3{
-    font-size: 15px;
-    color: white;
-    padding: 5px 10px;
+.movieDetails {
+  background: rgba(21, 31, 48);
+  padding: 20px;
+  position: absolute;
+  z-index: 99;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  transition: 0.3s all;
+  transform: translateY(100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.trailerButton{
-    position: absolute;
-    bottom: 20px;
-    background: transparent;
-    border: none;
-    color: #2f80ed;
-    padding: 5px 10px;
-    border-radius: 5px;
+.movieItem:hover .movieDetails {
+  transform: translateY(0);
 }
 
-.trailerButton:hover{
-    background: #fff;
-    cursor: pointer;
+.movieDetails h3 {
+  font-size: 15px;
+  color: white;
+  padding: 5px 10px;
 }
 
-.playTrailer{
-    margin-right: 5px;
-    position: relative;
-    top: 2px;
+.trailerButton {
+  background: transparent;
+  border: none;
+  color: #2f80ed;
+  border-radius: 5px;
 }
-.favourite{
-    position: absolute;
-    bottom: 23px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: #2f80ed;
+
+.trailerButton:hover {
+  cursor: pointer;
+  color: white;
 }
-.favourite:hover{
-    cursor: pointer;
-    color: #fff; 
+
+.playTrailer {
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
 }
-.movieItem img:hover{
-    opacity: 0.5;
+.favourite {
+  background: none;
+  border: none;
+  color: #2f80ed;
+}
+.favourite:hover {
+  cursor: pointer;
+  color: #fff;
+}
+.movieItem img:hover {
+  opacity: 0.5;
 }

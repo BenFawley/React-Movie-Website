@@ -1,27 +1,33 @@
-.favMovieList{
-    position: absolute;
-    top: 90%;
-    width: 100%;
-    max-width: 350px;
-    z-index: 200;
-    right: 2%;
-    background-color: #151f30;
-    padding: 0px;
-    overflow-y: scroll;
-    max-height: 380px;
+.favMovieList {
+  position: absolute;
+  top: 90%;
+  width: 100%;
+  max-width: 350px;
+  z-index: 200;
+  right: 2%;
+  background-color: #151f30;
+  padding: 0px;
+  overflow-y: scroll;
+  max-height: 380px;
+  transform: translateY(-300%);
+  transition: 0.5s ease-in-out;
 }
-.favHeader{
-    display: flex;
-    justify-content: space-between;
-    background-color:#2f80ed;
-    padding: 10px;
+
+.showFavList {
+  transform: translateY(0);
 }
-.favHeader p{
-    font-size: 20px;
-    font-weight: bold;
-    color: #131720;
-    cursor: pointer;
+.favHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2f80ed;
+  padding: 10px;
 }
-.favHeader h3{
-    color: #131720;
+.favHeader p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #131720;
+  cursor: pointer;
+}
+.favHeader h3 {
+  color: #131720;
 }
