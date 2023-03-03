@@ -1,11 +1,15 @@
-.homebanner{
-    position: relative;
-    /* background-image: url("../banner2.jpg"); */
-    /* background-size: cover;
+.homebanner {
+  position: relative;
+  /* background-image: url("../banner2.jpg"); */
+  /* background-size: cover;
     background-repeat: no-repeat;
     background-position: center; */
-    min-height: 60vh;
-    background: linear-gradient(to right, rgba(30,213,169, 1) 0%, rgba(1,180,228, 1) 100%);
+  min-height: 60vh;
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
 }
 /* .bannerOverlay {
     background-color: rgba(19, 23, 32, 0.5);
@@ -13,62 +17,110 @@
     height: 100%;
     position: absolute;
   } */
+.bannerText {
+  position: absolute;
+  top: 28%;
+  left: 10%;
+  width: 90%;
+}
+.bannerText h1 {
+  font-size: 50px;
+}
+.bannerSVG {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.carouselItem {
+  position: relative;
+}
+.carouselItem img {
+  width: 100%;
+  max-height: 700px;
+}
+.fadeIn {
+  opacity: 0;
+  transition: 2s opacity;
+}
+.homebannerOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.4;
+  background: #000 !important;
+}
+.homebannerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.homebannerText h1 {
+  font-size: 50px;
+  color: white;
+}
+.banner {
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+}
+
+.banner span {
+  /* color: #b8deed; */
+  color: white;
+  font-size: 1.5vw;
+  margin-bottom: 10px;
+  display: block;
+}
+.banner h1 {
+  color: #b8deed;
+  font-size: 4.5vw;
+}
+
+.banner p {
+  color: white;
+  font-size: 1.3vw;
+  max-width: 30%;
+  margin-top: 20px;
+  line-height: 30px;
+}
+
+@media only screen and (max-width: 800px) {
+  br {
+    display: none;
+  }
   .bannerText {
-    color: #032541;
-    position: absolute;
-    top: 30%;
+    top: 25%;
+    font-size: 45px;
+  }
+  .homebannerText h1 {
+    font-size: 6vw;
+    color: white;
+  }
+  .bannerText {
+    position: relative;
+    top: 28%;
     left: 10%;
     width: 90%;
   }
-  .bannerText h1 {
-    font-size: 50px;
-  }
-  .bannerSVG{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  .carouselItem{
-    position: relative;
-  }
-  .carouselItem img{
-    width: 100%;
-    max-height: 700px;
-
-  }
-  .fadeIn{
-    opacity: 0;
-    transition: 2s opacity;
-  }
-  .homebannerOverlay{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    opacity: 0.4;
-    background: #000 !important;
-  }
-  .homebannerText{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .homebannerText h1{
-    font-size: 50px;
+  .banner span {
     color: white;
+    font-size: 4vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .banner h1 {
+    color: #b8deed;
+    font-size: 10vw;
   }
 
-  @media only screen and (max-width: 500px) {
-    br{
-      display: none;
-    }
-    .bannerText {
-      top: 25%;
-      font-size: 45px;
-    }
-    .homebannerText h1{
-      font-size: 6vw;
-      color: white;
-    }
+  .banner p {
+    color: white;
+    font-size: 4vw;
+    max-width: 100%;
   }
+}
