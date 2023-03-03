@@ -41,6 +41,10 @@
   width: 75px;
 }
 
+.sticky {
+  position: sticky !important;
+}
+
 @media screen and (max-width: 1300px) {
   .header {
     position: sticky;

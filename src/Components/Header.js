@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${!ctx.isHomePage && styles.sticky}`}>
       <div className={styles.headerContent}>
         <div className={styles.logo}>
           <Link to={"/"}>

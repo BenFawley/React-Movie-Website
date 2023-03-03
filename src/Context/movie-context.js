@@ -96,6 +96,7 @@ export const MovieContextProvider = (props) => {
   const [videoURL, setVideoURL] = useState("");
   const [favState, dispatchFav] = useReducer(favouritesReducer, initialState);
   const [startAnimation, setStartAnimation] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
 
   useEffect(() => {
     setStartAnimation(true);
@@ -174,6 +175,10 @@ export const MovieContextProvider = (props) => {
     setSearchValue("");
   };
 
+  const updateHomePage = (boolean) => {
+    setIsHomePage(boolean);
+  };
+
   return (
     <MovieContext.Provider
       value={{
@@ -190,6 +195,8 @@ export const MovieContextProvider = (props) => {
         videoURL: videoURL,
         favState: favState,
         startAnimation: startAnimation,
+        isHomePage: isHomePage,
+        onUpdateHomePage: updateHomePage,
       }}
     >
       {props.children}
