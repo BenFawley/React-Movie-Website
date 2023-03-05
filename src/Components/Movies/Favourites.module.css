@@ -19,10 +19,12 @@
   top: 3px;
   cursor: pointer;
   right: 13px;
+  max-width: 16px;
 }
 
 .myFavourites {
   position: relative;
+  max-width: 16px;
 }
 
 @media screen and (max-width: 800px) {
