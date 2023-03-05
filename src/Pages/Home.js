@@ -21,6 +21,8 @@ const Home = () => {
         inline: "start",
         block: "start",
       });
+    } else {
+      return;
     }
   }, [ctx.videoURL]);
 
