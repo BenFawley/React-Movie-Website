@@ -70,7 +70,14 @@ const MovieDetails = () => {
                 </div>
                 <div className={styles.bannerContent}>
                   <div>
-                    <h1>{title + ` (${date.substring(0, 4)})`}</h1>
+                    <h1>
+                      {title +
+                        ` (${
+                          date === undefined
+                            ? date.substring(0, 4)
+                            : new Date().getFullYear()
+                        })`}
+                    </h1>
                     <div className={styles.bannerButtons}>
                       <div
                         style={{

@@ -31,3 +31,11 @@
 .favHeader h3 {
   color: #131720;
 }
+
+@media screen and (max-width: 800px) {
+  .favMovieList {
+    width: 100%;
+    max-width: 100%;
+    right: 0;
+  }
+}

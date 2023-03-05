@@ -144,7 +144,6 @@ export const MovieContextProvider = (props) => {
         poster: poster_path,
       },
       showFavIcon: true,
-      showFavMovies: true,
     });
   };
 

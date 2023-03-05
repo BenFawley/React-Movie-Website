@@ -53,7 +53,11 @@
 
 @media screen and (max-width: 500px) {
   .search {
-    width: 220px;
+    width: 100%;
+  }
+  .searchWrapper {
+    margin: 0 5px;
+    width: 65%;
   }
   .searchIcon {
     left: 85%;
