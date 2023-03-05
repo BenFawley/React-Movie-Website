@@ -6,8 +6,6 @@ import Color from "color-thief-react";
 import { FaPlay, FaHeart } from "react-icons/fa";
 import Button from "../Components/Button";
 import MovieContext from "../Context/movie-context";
-import Header from "../Components/Header";
-import Modal from "../Components/Modal";
 import MovieList from "../Components/Movies/MovieList";
 import Footer from "../Components/Footer";
 

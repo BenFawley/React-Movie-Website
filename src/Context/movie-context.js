@@ -1,7 +1,6 @@
 import React, { useState, useReducer, useEffect } from "react";
 import { getSearchedMovies } from "../api/getSearchedMovies";
 import { getTrailer } from "../api/getTrailer";
-import { BASE_URL, API_KEY } from "../api/config";
 
 const initialState = {
   showFavMovies: false,

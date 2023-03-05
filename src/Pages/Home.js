@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef } from "react";
-import Header from "../Components/Header";
 import styles from "./Home.module.css";
 import MovieList from "../Components/Movies/MovieList";
 import Modal from "../Components/Modal";
